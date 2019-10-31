@@ -58,9 +58,9 @@ public class ParallelMergeSort extends Thread {
     }
 
     private void mergeSort(int[] arr, int left, int right) throws IOException, InterruptedException {
-        if (right - left <= 2)
+        if (right - left < 2)
         {
-            if (right - left <= 2)
+            if (right - left < 2)
             {
                 if (right - left == 1) //if there are 2 elements left
                 {
