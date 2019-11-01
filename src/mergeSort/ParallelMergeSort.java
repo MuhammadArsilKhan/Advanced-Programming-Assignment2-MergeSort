@@ -58,41 +58,36 @@ public class ParallelMergeSort extends Thread {
     }
 
     private void mergeSort(int[] arr, int left, int right) throws IOException, InterruptedException {
-        if (right - left < 2)
+      
+        if (right - left == 1) //if there are 2 elements left
         {
-            if (right - left < 2)
-            {
-                if (right - left == 1) //if there are 2 elements left
-                {
-                    FileWriter fileWriter = new FileWriter(this.threadName+".txt");
-                    PrintWriter printWriter = new PrintWriter(fileWriter);
-                    printWriter.print("Input Array:    ");
-                    for (int i = left; i <= right; i++) {
-                        printWriter.printf("%d     ", arr[i]);
-                    }
-                    printWriter.println("");
-                    if (arr[left] > arr[right]) {
-                        int temp = arr[left];
-                        arr[left] = arr[right];
-                        arr[right] = temp;
-                    }
-                    printWriter.print("Sorted Array:    ");
-                    for (int i = left; i <= right; i++) {
-                        printWriter.printf("%d     ", arr[i]);
-                    }
-                    printWriter.println("");
-                    printWriter.close();
-                }
+            FileWriter fileWriter = new FileWriter(this.threadName+".txt");
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print("Input Array:    ");
+            for (int i = left; i <= right; i++) {
+                printWriter.printf("%d     ", arr[i]);
             }
-            else if (right-left==0) //if there is only one element left
-            {
-                FileWriter fileWriter = new FileWriter(this.threadName+".txt");
-                PrintWriter printWriter = new PrintWriter(fileWriter);
-                printWriter.print("Input Array:    ");
-                printWriter.printf("%d\n", arr[left]);
-                printWriter.print("Sorted Array:    ");
-                printWriter.printf("%d\n", arr[left]);
+            printWriter.println("");
+            if (arr[left] > arr[right]) {
+                int temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
             }
+            printWriter.print("Sorted Array:    ");
+            for (int i = left; i <= right; i++) {
+                printWriter.printf("%d     ", arr[i]);
+            }
+            printWriter.println("");
+            printWriter.close();
+        }
+        else if (right-left==0) //if there is only one element left
+        {
+            FileWriter fileWriter = new FileWriter(this.threadName+".txt");
+            PrintWriter printWriter = new PrintWriter(fileWriter);
+            printWriter.print("Input Array:    ");
+            printWriter.printf("%d\n", arr[left]);
+            printWriter.print("Sorted Array:    ");
+            printWriter.printf("%d\n", arr[left]);
         }
         else
         {
